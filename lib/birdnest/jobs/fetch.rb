@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "sidekiq"
+
 module Birdnest
   module Jobs
     class Fetch

@@ -20,7 +20,7 @@ services:
     <<: *app
     tty: true
     ports:
-      - "8080:8080"
+      - "4000:4000"
     networks:
       - fcloud
     labels:

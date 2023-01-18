@@ -9,7 +9,7 @@ It was made for [Reaktor's internship](https://assignments.reaktor.com/birdnest/
 ## Usage
 
 Execute `bin/birdnest` to launch the web application.
-It is available on [http://localhost:8080/](http://localhost:8080).
+It is available on [http://localhost:4000/](http://localhost:4000).
 
 ## Architecture
 

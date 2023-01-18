@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "redis-client"
+
 module Birdnest
   class Redis
     delegate_missing_to :redis
