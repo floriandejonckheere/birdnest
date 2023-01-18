@@ -1,0 +1,47 @@
+version: "3.8"
+
+x-app: &app
+  build: .
+  volumes:
+    - .:/app/:cached
+    - bundle:/usr/local/bundle/
+  depends_on:
+    - redis
+
+services:
+  redis:
+    image: redis:alpine
+    networks:
+      - fcloud
+    volumes:
+      - redis:/data/
+
+  app:
+    <<: *app
+    tty: true
+    ports:
+      - "8080:8080"
+    networks:
+      - fcloud
+    labels:
+      traefik.enable: "true"
+      traefik.http.middlewares.birdnest-tls.redirectscheme.scheme: "https"
+
+      traefik.http.routers.birdnest.rule: "Host(`birdnest.cloud.dejonckhee.re`)"
+      traefik.http.routers.birdnest.entrypoints: "web"
+      traefik.http.routers.birdnest.middlewares: "birdnest-tls"
+
+      traefik.http.routers.birdnest-tls.rule: "Host(`birdnest.cloud.dejonckhee.re`)"
+      traefik.http.routers.birdnest-tls.entrypoints: "websecure"
+      traefik.http.routers.birdnest-tls.tls: "true"
+      traefik.http.routers.birdnest-tls.tls.certresolver: "letsencrypt"
+
+      traefik.http.services.birdnest.loadbalancer.server.port: "3000"
+
+volumes:
+  redis:
+  bundle:
+
+networks:
+  fcloud:
+    name: fcloud_default
