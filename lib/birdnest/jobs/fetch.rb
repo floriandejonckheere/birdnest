@@ -20,7 +20,7 @@ module Birdnest
           x, y = drone[:drone].slice(:positionX, :positionY).values.map(&:to_d)
 
           # Check if the drone violates the NDZ
-          d = Math.sqrt((x - 250_000)**2 + (y - 250_000)**2)
+          d = Math.sqrt(((x - 250_000)**2) + ((y - 250_000)**2))
 
           # Skip if the drone is outside the NDZ
           next if d < 100_000

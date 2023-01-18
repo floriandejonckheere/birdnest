@@ -21,5 +21,4 @@ sidekiq = Sidekiq.configure_embed do |config|
   end
 end
 
-
 sidekiq.run
