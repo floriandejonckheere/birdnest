@@ -3,6 +3,7 @@
 require "logger"
 
 require "active_support/all"
+require "redis-client"
 require "zeitwerk"
 
 require "debug" if ENV["ENV"] == "development"
@@ -17,6 +18,14 @@ module Birdnest
 
     def logger
       @logger ||= Logger.new
+    end
+
+    def config
+      @config ||= Configuration.new
+    end
+
+    def redis
+      @redis ||= Redis.new
     end
 
     def setup

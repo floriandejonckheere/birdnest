@@ -7,6 +7,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
     concurrent-ruby (1.1.10)
+    connection_pool (2.3.0)
     debug (1.7.1)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
@@ -14,6 +15,8 @@ GEM
     irb (1.6.2)
       reline (>= 0.3.0)
     minitest (5.17.0)
+    redis-client (0.12.1)
+      connection_pool
     reline (0.3.2)
       io-console (~> 0.5)
     tzinfo (2.0.5)
@@ -27,6 +30,7 @@ DEPENDENCIES
   activesupport
   debug
   irb
+  redis-client
   zeitwerk
 
 RUBY VERSION
