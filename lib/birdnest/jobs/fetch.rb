@@ -37,6 +37,12 @@ module Birdnest
           # Store pilot information
           Birdnest.redis.call("HSET", "pilot:#{id}", "first_name", first_name, "last_name", last_name, "phone", phone, "email", email)
 
+          # Previous distance
+          distance = Birdnest.redis.call("HGET", "pilot:#{id}", "distance")&.to_d
+
+          # Update distance if it's less than the previous one
+          Birdnest.redis.call("HSET", "pilot:#{id}", "distance", d) if !distance || d < distance
+
           # Expire information in 10 minutes
           Birdnest.redis.call("EXPIRE", "pilot:#{id}", 600)
         end
