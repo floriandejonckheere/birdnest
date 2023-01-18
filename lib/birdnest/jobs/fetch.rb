@@ -45,7 +45,7 @@ module Birdnest
           distance = Birdnest.redis.call("HGET", "pilot:#{id}", "distance")&.to_d
 
           # Update distance if it's less than the previous one
-          Birdnest.redis.call("HSET", "pilot:#{id}", "distance", d, "last_seen_at", time)
+          Birdnest.redis.call("HSET", "pilot:#{id}", "distance", distance, "last_seen_at", time)
 
           # Expire information in 10 minutes
           Birdnest.redis.call("EXPIRE", "pilot:#{id}", 600)
