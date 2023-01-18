@@ -6,8 +6,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "~> 3.2"
 
-# ActiveSupport
+# ActiveSupport and ActionView
 gem "activesupport", "~> 7.0"
+
+# Distance of time in words
+gem "dotiw"
 
 # HTTP client
 gem "http"
