@@ -15,4 +15,7 @@ gem "zeitwerk"
 group :development do
   # Debugger
   gem "debug", require: false
+
+  # Console
+  gem "irb", require: false
 end
