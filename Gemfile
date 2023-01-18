@@ -9,6 +9,9 @@ ruby "~> 3.2"
 # ActiveSupport
 gem "activesupport", "~> 7.0"
 
+# HTTP client
+gem "http"
+
 # Simple low level client for Redis 6+
 gem "redis-client", "~> 0.12"
 
