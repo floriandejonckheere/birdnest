@@ -8,7 +8,7 @@ module Birdnest
       include Sidekiq::Worker
 
       def perform
-        "Fetching!"
+        puts "Fetching!"
       end
     end
   end

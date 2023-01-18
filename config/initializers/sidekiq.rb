@@ -11,6 +11,15 @@ sidekiq = Sidekiq.configure_embed do |config|
   config.queues = ["default"]
   config.concurrency = 1
   config.redis = { url: Birdnest.config.redis_url, size: Birdnest.config.redis_pool }
+
+  Thread.new do
+    loop do
+      Birdnest::Jobs::Fetch.perform_async
+
+      sleep 2
+    end
+  end
 end
+
 
 sidekiq.run

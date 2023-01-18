@@ -1,5 +1,0 @@
-:scheduler:
-  :schedule:
-    fetch:
-      cron: '*/12 * * * * *'   # Runs every 5 seconds
-      class: Birdnest::Jobs::Fetch
