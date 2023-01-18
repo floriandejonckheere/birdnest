@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
+require "dotiw"
 require "sinatra/base"
 
 module Birdnest
   class Server < Sinatra::Base
+    include DOTIW::Methods
+
     get "/" do
-      erb :index, locals: { pilots: pilots.sort_by { |pilot| pilot[:last_name] } }
+      erb :index, locals: { pilots: pilots.sort_by { |pilot| pilot[:last_seen_at] }.reverse }
     end
 
     private

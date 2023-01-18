@@ -16,7 +16,11 @@ module Birdnest
 
         doc = Ox.load(response.to_s, mode: :hash)
 
-        doc.dig(:report, :capture).drop(1).each do |drone|
+        tags, *captures = doc.dig(:report, :capture)
+
+        time = tags[:snapshotTimestamp]
+
+        captures.each do |drone|
           x, y = drone[:drone].slice(:positionX, :positionY).values.map(&:to_d)
 
           # Check if the drone violates the NDZ
@@ -41,7 +45,7 @@ module Birdnest
           distance = Birdnest.redis.call("HGET", "pilot:#{id}", "distance")&.to_d
 
           # Update distance if it's less than the previous one
-          Birdnest.redis.call("HSET", "pilot:#{id}", "distance", d) if !distance || d < distance
+          Birdnest.redis.call("HSET", "pilot:#{id}", "distance", d, "last_seen_at", time)
 
           # Expire information in 10 minutes
           Birdnest.redis.call("EXPIRE", "pilot:#{id}", 600)
