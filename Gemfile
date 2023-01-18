@@ -41,9 +41,6 @@ group :development, :test do
 end
 
 group :development do
-  # Debugger
-  gem "debug", require: false
-
   # Console
   gem "irb", require: false
 end

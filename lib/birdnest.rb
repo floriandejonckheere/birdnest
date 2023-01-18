@@ -6,8 +6,6 @@ require "logger"
 require "active_support/all"
 require "zeitwerk"
 
-require "debug" if ENV["ENV"] == "development"
-
 module Birdnest
   class << self
     attr_reader :loader

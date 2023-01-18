@@ -20,7 +20,6 @@ GEM
     ast (2.4.2)
     concurrent-ruby (1.1.10)
     connection_pool (2.3.0)
-    debug (1.7.1)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotiw (5.3.3)
@@ -116,7 +115,6 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport (~> 7.0)
-  debug
   dotiw
   http
   irb
