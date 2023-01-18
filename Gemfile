@@ -14,7 +14,7 @@ gem "redis-client", "~> 0.12"
 
 # Asynchronous job scheduler
 gem "sidekiq", "~> 7.0"
-gem "sidekiq-scheduler"
+gem "sidekiq-scheduler", github: "sidekiq-scheduler/sidekiq-scheduler"
 
 # Simple web framework
 gem "sinatra", "~> 3.0"

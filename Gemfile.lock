@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/sidekiq-scheduler/sidekiq-scheduler.git
+  revision: fa293cec9c95ccf6a4e4455b12071b30e664eb07
+  specs:
+    sidekiq-scheduler (5.0.0.beta2)
+      rufus-scheduler (~> 3.2)
+      sidekiq (>= 4, < 8)
+      tilt (>= 1.4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -32,8 +41,6 @@ GEM
     rack-protection (3.0.5)
       rack
     rainbow (3.1.1)
-    redis (5.0.6)
-      redis-client (>= 0.9.0)
     redis-client (0.12.1)
       connection_pool
     regexp_parser (2.6.1)
@@ -64,11 +71,6 @@ GEM
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
       redis-client (>= 0.11.0)
-    sidekiq-scheduler (4.0.2)
-      redis (>= 4.2.0)
-      rufus-scheduler (~> 3.2)
-      sidekiq (>= 4)
-      tilt (>= 1.4.0)
     sinatra (3.0.5)
       mustermann (~> 3.0)
       rack (~> 2.2, >= 2.2.4)
@@ -92,7 +94,7 @@ DEPENDENCIES
   rubocop
   rubocop-performance
   sidekiq (~> 7.0)
-  sidekiq-scheduler
+  sidekiq-scheduler!
   sinatra (~> 3.0)
   webrick (~> 1.7)
   zeitwerk
