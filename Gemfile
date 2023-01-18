@@ -19,6 +19,9 @@ gem "sidekiq-scheduler"
 # Simple web framework
 gem "sinatra", "~> 3.0"
 
+# Rack application server
+gem "webrick", "~> 1.7"
+
 # Code loader
 gem "zeitwerk"
 
