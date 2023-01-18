@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "http"
+require "ox"
 require "sidekiq"
 
 module Birdnest
@@ -8,7 +10,36 @@ module Birdnest
       include Sidekiq::Worker
 
       def perform
-        puts "Fetching!"
+        response = HTTP.get("https://assignments.reaktor.com/birdnest/drones")
+
+        return unless response.status.success?
+
+        doc = Ox.load(response.to_s, mode: :hash)
+
+        doc.dig(:report, :capture).drop(1).each do |drone|
+          x, y = drone[:drone].slice(:positionX, :positionY).values.map(&:to_d)
+
+          # Check if the drone violates the NDZ
+          d = Math.sqrt((x - 250_000)**2 + (y - 250_000)**2)
+
+          # Skip if the drone is outside the NDZ
+          next if d < 100_000
+
+          # Query pilot information
+          response = HTTP.get("https://assignments.reaktor.com/birdnest/pilots/#{drone.dig(:drone, :serialNumber)}")
+
+          next unless response.status.success?
+
+          doc = JSON.parse(response.to_s, symbolize_names: true)
+
+          id, first_name, last_name, phone, email = doc.slice(:pilotId, :firstName, :lastName, :phoneNumber, :email).values
+
+          # Store pilot information
+          Birdnest.redis.call("HSET", "pilot:#{id}", "first_name", first_name, "last_name", last_name, "phone", phone, "email", email)
+
+          # Expire information in 10 minutes
+          Birdnest.redis.call("EXPIRE", "pilot:#{id}", 600)
+        end
       end
     end
   end

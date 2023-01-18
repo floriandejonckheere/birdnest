@@ -16,7 +16,7 @@ sidekiq = Sidekiq.configure_embed do |config|
     loop do
       Birdnest::Jobs::Fetch.perform_async
 
-      sleep 2
+      sleep 5
     end
   end
 end
