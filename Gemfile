@@ -14,6 +14,7 @@ gem "redis-client", "~> 0.12"
 
 # Asynchronous job scheduler
 gem "sidekiq", "~> 7.0"
+gem "sidekiq-scheduler"
 
 # Code loader
 gem "zeitwerk"

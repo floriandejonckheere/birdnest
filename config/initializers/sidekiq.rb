@@ -4,6 +4,7 @@
 return unless $PROGRAM_NAME == "bin/birdnest"
 
 require "sidekiq"
+require "sidekiq-scheduler"
 
 sidekiq = Sidekiq.configure_embed do |config|
   config.logger.level = :debug
