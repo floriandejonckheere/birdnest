@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "English"
 require "logger"
 
 require "active_support/all"
@@ -31,13 +32,13 @@ module Birdnest
     def setup
       @loader = Zeitwerk::Loader.for_gem
 
-      # Run initializers
-      Dir[root.join("config/initializers/*.rb")].each { |f| require f}
-
       # Set up code loader
       loader.enable_reloading
       loader.setup
       loader.eager_load
+
+      # Run initializers
+      Dir[root.join("config/initializers/*.rb")].each { |f| require f }
     end
   end
 end

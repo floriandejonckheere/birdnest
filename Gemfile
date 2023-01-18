@@ -7,10 +7,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "~> 3.2"
 
 # ActiveSupport
-gem "activesupport"
+gem "activesupport", "~> 7.0"
 
 # Simple low level client for Redis 6+
-gem "redis-client"
+gem "redis-client", "~> 0.12"
+
+# Asynchronous job scheduler
+gem "sidekiq", "~> 7.0"
 
 # Code loader
 gem "zeitwerk"

@@ -15,10 +15,16 @@ GEM
     irb (1.6.2)
       reline (>= 0.3.0)
     minitest (5.17.0)
+    rack (3.0.4.1)
     redis-client (0.12.1)
       connection_pool
     reline (0.3.2)
       io-console (~> 0.5)
+    sidekiq (7.0.3)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.11.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     zeitwerk (2.6.6)
@@ -27,10 +33,11 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activesupport
+  activesupport (~> 7.0)
   debug
   irb
-  redis-client
+  redis-client (~> 0.12)
+  sidekiq (~> 7.0)
   zeitwerk
 
 RUBY VERSION
