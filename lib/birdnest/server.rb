@@ -5,7 +5,7 @@ require "sinatra/base"
 module Birdnest
   class Server < Sinatra::Base
     get "/" do
-      erb :index, locals: { pilots: }
+      erb :index, locals: { pilots: pilots.sort_by { |pilot| pilot[:last_name] } }
     end
 
     private
