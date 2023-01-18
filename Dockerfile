@@ -3,6 +3,7 @@ FROM ruby:3.2-alpine
 MAINTAINER Florian Dejonckheere <florian@floriandejonckheere.be>
 LABEL org.opencontainers.image.source https://github.com/floriandejonckheere/birdnest
 
+ENV RUNTIME_DEPS tzdata
 ENV BUILD_DEPS build-base curl-dev git
 
 ENV LC_ALL en_US.UTF-8
@@ -20,7 +21,7 @@ RUN addgroup -g $GID $USER
 RUN adduser -D -u $UID -G $USER -h $APP_HOME/ $USER
 
 # Install system dependencies
-RUN apk add --no-cache $BUILD_DEPS
+RUN apk add --no-cache $RUNTIME_DEPS $BUILD_DEPS
 
 # Install Bundler
 RUN gem update --system && gem install bundler
