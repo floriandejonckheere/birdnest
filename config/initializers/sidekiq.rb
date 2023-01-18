@@ -7,7 +7,7 @@ require "sidekiq"
 
 sidekiq = Sidekiq.configure_embed do |config|
   config.logger.level = :debug
-  config.queues = %w(default)
+  config.queues = ["default"]
   config.concurrency = 1
   config.redis = { url: Birdnest.config.redis_url, size: Birdnest.config.redis_pool }
 end

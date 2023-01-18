@@ -2,7 +2,6 @@
 
 module Birdnest
   class Server
-    def start
-    end
+    def start; end
   end
 end
