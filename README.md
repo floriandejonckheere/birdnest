@@ -11,6 +11,12 @@ It was made for [Reaktor's internship](https://assignments.reaktor.com/birdnest/
 Execute `bin/birdnest` to launch the web application.
 It is available on [http://localhost:8080/](http://localhost:8080).
 
+## Architecture
+
+For this fairly simple assignment, a simple architecture was chosen.
+The application uses Sinatra to expose a web server, serving a single page.
+An embedded job scheduler fetches data every few seconds, and stores it in a Redis database with an expiry of 10 minutes.
+
 ## Release
 
 Update the changelog and bump the version using the `bin/version` tool.
