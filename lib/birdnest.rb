@@ -31,8 +31,8 @@ module Birdnest
     def setup
       @loader = Zeitwerk::Loader.for_gem
 
-      # Register inflections
-      require root.join("config/inflections.rb")
+      # Run initializers
+      Dir[root.join("config/initializers/*.rb")].each { |f| require f}
 
       # Set up code loader
       loader.enable_reloading
