@@ -16,6 +16,9 @@ gem "redis-client", "~> 0.12"
 gem "sidekiq", "~> 7.0"
 gem "sidekiq-scheduler"
 
+# Simple web framework
+gem "sinatra", "~> 3.0"
+
 # Code loader
 gem "zeitwerk"
 
