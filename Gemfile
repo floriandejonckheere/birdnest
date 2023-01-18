@@ -18,6 +18,12 @@ gem "sidekiq", "~> 7.0"
 # Code loader
 gem "zeitwerk"
 
+group :development, :test do
+  # Linter
+  gem "rubocop"
+  gem "rubocop-performance"
+end
+
 group :development do
   # Debugger
   gem "debug", require: false
