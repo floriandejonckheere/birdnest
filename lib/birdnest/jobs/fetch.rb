@@ -23,7 +23,7 @@ module Birdnest
           d = Math.sqrt(((x - 250_000)**2) + ((y - 250_000)**2))
 
           # Skip if the drone is outside the NDZ
-          next if d < 100_000
+          next if d > 100_000
 
           # Query pilot information
           response = HTTP.get("https://assignments.reaktor.com/birdnest/pilots/#{drone.dig(:drone, :serialNumber)}")
